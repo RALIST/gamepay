@@ -8,8 +8,7 @@
           .card-title
             = link_to game.name, game_path(game)
           .card-text.text-success
-            Sellers: 999
-            Purchases: 999
+            Offers: #{game.lots_count}
 
   %hr
   %h1.h3
@@ -22,4 +21,4 @@
       .row
         - games.each do |game|
           .col-3
-            = link_to game.name + " (#{game.lots.count})", game_path(game)
+            = link_to game.name + " (#{game.lots_count})", game_path(game)

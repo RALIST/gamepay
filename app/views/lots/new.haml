@@ -4,6 +4,9 @@
       %h2.text-center Create lot
       = form_for [:game, @lot] do |f|
         .form-group
+          = f.label :server_name
+          = f.select :server_name, @game.game_servers.pluck(:name)
+        .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'
         .form-group

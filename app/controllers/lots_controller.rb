@@ -6,6 +6,10 @@ class LotsController < ApplicationController
     @lots = @game.lots
   end
 
+  def show
+
+  end
+
   def new
     @lot = Lot.new
   end

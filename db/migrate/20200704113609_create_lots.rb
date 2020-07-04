@@ -7,6 +7,8 @@ class CreateLots < ActiveRecord::Migration[6.0]
       t.string :type
       t.references :user, type: :uuid
       t.references :game, type: :uuid
+      t.references :game_server, type: :uuid
+      t.references :lot_type, type: :uuid
       t.string :slug, index: {unique: true }
     end
   end

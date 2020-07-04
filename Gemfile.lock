@@ -59,10 +59,7 @@ GEM
     babosa (1.0.3)
     bcrypt (3.1.13)
     bindex (0.8.1)
-    bootsnap (1.4.6)
-      msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.1.3)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     devise (4.7.1)
@@ -117,7 +114,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    msgpack (1.3.3-x64-mingw32)
     nio4r (2.5.2)
     nokogiri (1.10.9-x64-mingw32)
       mini_portile2 (~> 2.4.0)
@@ -219,8 +215,6 @@ PLATFORMS
 
 DEPENDENCIES
   babosa (= 1.0.3)
-  bootsnap (>= 1.4.2)
-  byebug
   devise (~> 4.7.0)
   factory_bot_rails (= 4.11.1)
   faker

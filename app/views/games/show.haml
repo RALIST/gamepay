@@ -1,23 +1,27 @@
 .container.mt-5
   %h1
-    = @game.name
+    = link_to @game.name, @game
+    = params[:type]&.capitalize
   .text-secondary.lead
     Some SEO text with #{@game.name} and offered goods
   %hr
-  .h3
-    Offers
-    .small
-      = link_to 'Add offer', new_game_lot_path(@game)
-  %table.table.table-sm
-    %thead
+  .row
+    .col-10
+      %ul.list-inline
+        %li.list-inline-item= link_to 'All', @game
+        - @lot_names.each do |type|
+          %li.list-inline-item= link_to type.capitalize, game_path(@game, type)
+    .col-2.text-right
+      = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-info btn-sm'
+  %table.table.table-borderless.table-hover
+    %thead.thead-light
       %th
         Seller
       %th
-        Offer name
+        Server
       %th
-        Offer desc
+        Offer title
       %th
-        Offer price
-      %th
+        Price
     %tbody
       = render @lots
