@@ -5,9 +5,18 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import './styles.scss'
 
 require("@rails/ujs").start();
+import $ from 'jquery';
+import jQuery from 'jquery';
+window.jQuery = $; window.$ = jQuery; global.$ = jQuery;
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("@fortawesome/fontawesome-free");
+require("bootstrap/dist/js/bootstrap.min");
+
+document.addEventListener('turbolinks:load', function(){
+  $(".alert").alert();
+});

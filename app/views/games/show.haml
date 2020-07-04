@@ -3,3 +3,9 @@
     = @game.name
   .text-secondary.lead
     Some SEO text with #{@game.name} and offered goods
+  %hr
+  .h3
+    Offers
+    .small
+      = link_to 'Add offer', new_game_lot_path(@game)
+    = render @lots

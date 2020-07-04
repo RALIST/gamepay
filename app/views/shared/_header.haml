@@ -8,9 +8,12 @@
 
     .collapse.navbar-collapse
       .navbar-nav.w-100.justify-content-end.align-items-center
-        = link_to 'Settings', "#", class: 'nav-item nav-link'
-        = link_to 'Funds', "#", class: 'nav-item nav-link'
-        = link_to 'My games', "#", class: 'nav-item nav-link'
-        = link_to 'Help', "#", class: 'nav-item nav-link'
-        = link_to "#", class: 'nav-item nav-link' do
-          %i.far.fa-user-circle.fa-2x
+        - if signed_in?
+          = link_to 'Settings', "#", class: 'nav-item nav-link'
+          = link_to 'Funds', "#", class: 'nav-item nav-link'
+          = link_to 'My games', "#", class: 'nav-item nav-link'
+          = link_to 'Help', "#", class: 'nav-item nav-link'
+          = link_to "Log out", destroy_user_session_path, class: 'nav-item nav-link', method: :delete
+        - else
+          = link_to 'Sign in', new_user_session_path, class: 'nav-item nav-link'
+          = link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link'

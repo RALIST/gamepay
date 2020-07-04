@@ -1,0 +1,14 @@
+@import '~bootstrap';
+
+.alert {
+  position: fixed;
+  right: 0;
+  z-index: 999;
+
+}
+.alert-alert {
+  @extend .alert-danger;
+}
+.alert-notice {
+  @extend .alert-success;
+}
