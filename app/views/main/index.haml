@@ -22,4 +22,4 @@
       .row
         - games.each do |game|
           .col-3
-            = link_to game.name, game_path(game)
+            = link_to game.name + " (#{game.lots.count})", game_path(game)
