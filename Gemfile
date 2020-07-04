@@ -39,4 +39,8 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'haml-rails', '~> 2.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'meta-tags', '2.13.0'
+gem 'friendly_id', '~> 5.2.4'
+gem 'babosa', '1.0.3'

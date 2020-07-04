@@ -1,0 +1,25 @@
+.container.mt-5
+  %h1.h3
+    Popular games
+  .card-deck
+    - @games.each do |game|
+      .card
+        .card-body
+          .card-title
+            = link_to game.name, game_path(game)
+          .card-text.text-success
+            Sellers: 999
+            Purchases: 999
+
+  %hr
+  %h1.h3
+    All games
+
+  - @grouped_games.each do |group, games|
+    .my-3
+      .lead.mb-2.small
+        = group
+      .row
+        - games.each do |game|
+          .col-3
+            = link_to game.name, game_path(game)
