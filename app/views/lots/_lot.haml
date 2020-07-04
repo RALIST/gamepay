@@ -1,3 +1,11 @@
-= lot.name
-= lot.description
-= lot.price
+%tr
+  %td
+    = lot.user.email
+  %td
+    = lot.name
+  %td
+    = lot.description
+  %td
+    = lot.price
+  %td
+    = link_to 'Buy now', '#', class: 'btn btn-sm btn-success ml-3'

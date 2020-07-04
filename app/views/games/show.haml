@@ -8,4 +8,16 @@
     Offers
     .small
       = link_to 'Add offer', new_game_lot_path(@game)
-    = render @lots
+  %table.table.table-sm
+    %thead
+      %th
+        Seller
+      %th
+        Offer name
+      %th
+        Offer desc
+      %th
+        Offer price
+      %th
+    %tbody
+      = render @lots
