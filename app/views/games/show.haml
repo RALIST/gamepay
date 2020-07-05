@@ -2,18 +2,20 @@
   %h1
     = link_to @game.name, @game
     = params[:type]&.capitalize
+    .small.btn-group
+      - @game.game_servers.map(&:tag).uniq.sort.each do |tag|
+        = active_link_to tag, game_path(@game, tag, params[:type]), active: :exclusive, class: 'btn btn-sm btn-info'
   .text-secondary.lead
     Some SEO text with #{@game.name} and offered goods
   %hr
   .row
     .col-10
-      %ul.list-inline
-        %li.list-inline-item= link_to 'All', @game
+      .btn-group
         - @lot_names.each do |type|
-          %li.list-inline-item= link_to type.capitalize, game_path(@game, type)
+          = active_link_to type.capitalize, game_path(@game, params[:tag], type), class: 'btn btn-sm btn-warning',active: :exclusive
     .col-2.text-right
-      = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-info btn-sm'
-  %table.table.table-borderless.table-hover
+      = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-success btn-sm'
+  %table.table.table-borderless.table-hover.mt-3
     %thead.thead-light
       %th
         Seller

@@ -1,11 +1,14 @@
 .container.mt-5
   .row.justify-content-center
     .col-4
-      %h2.text-center Create lot
-      = form_for [:game, @lot] do |f|
+      %h2.text-center Create offer for #{@game.name}
+      = form_for [@game, @lot] do |f|
         .form-group
-          = f.label :server_name
-          = f.select :server_name, @game.game_servers.pluck(:name)
+          = f.label :lot_type
+          = f.select :lot_type, LotType.types, {}, class: 'form-control'
+        .form-group
+          = f.label :game_server
+          = f.select :game_server, @game.game_servers.map { |s| [s.name + " (#{s.tag})", s.id] }, {}, class: 'form-control'
         .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'

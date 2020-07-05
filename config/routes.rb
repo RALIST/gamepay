@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, path: 'auth'
   root 'main#index'
 
-
-  get '/games/:id/(:type)', to: "games#show", as: :game
-
-  resources :games do
+  resources :games, only: [] do
 	  resources :lots
   end
+  get '/games/:id/(:tag(/:type))', defaults: {tag: 'RU'}, to: "games#show", as: :game
+
+
 
   resources :users, only: [:show]
 end

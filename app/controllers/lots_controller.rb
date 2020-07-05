@@ -11,11 +11,11 @@ class LotsController < ApplicationController
   end
 
   def new
-    @lot = Lot.new
+    @lot = game.lots.new
   end
 
   def create
-    @lot = Lot.create(lot_params)
+    @lot = game.lots.create(lot_params)
     if @lot.save
       redirect_to game
     else
@@ -27,7 +27,15 @@ class LotsController < ApplicationController
   private
 
   def lot_params
-    params.require(:lot).permit(:name, :description, :price).merge!(game_id: game.id, user: current_user)
+    params.require(:lot).permit(:name, :description, :price, :lot_type, :game_server).merge!(user: current_user, lot_type: lot_type, game_server: game_server)
+  end
+
+  def game_server
+    @game_server ||= GameServer.find(params[:lot][:game_server])
+  end
+
+  def lot_type
+    @lot_type ||= LotType.find_by!(name: params[:lot][:lot_type] )
   end
 
   def game

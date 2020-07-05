@@ -9,11 +9,13 @@ page = Nokogiri::HTML(open(uri))
 games = []
 page.css('div.game-title:not(.hidden)').each do |node|
 	game = Game.find_or_create_by!(name: node.text)
-	FactoryBot.create :game_server, game: game
+	10.times do
+		FactoryBot.create :game_server, game: game
+	end
   games << game
 end
 
-FactoryBot.create_list :user, 10 rescue nil
+FactoryBot.create_list :user, 30 rescue nil
 
 lot_types.each do |lot|
 	LotType.create(name: lot)
