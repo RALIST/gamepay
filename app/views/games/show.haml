@@ -1,20 +1,22 @@
 .container.mt-5
   %h1
     = link_to @game.name, @game
-    = params[:type]&.capitalize
+    = params[:type]&.capitalize unless params[:type] == 'all'
     .small.btn-group
       - @game.game_servers.map(&:tag).uniq.sort.each do |tag|
-        = active_link_to tag, game_path(@game, tag, params[:type]), active: :exclusive, class: 'btn btn-sm btn-info'
+        = active_link_to tag, filtered_game_path(@game, type: params[:type], tag: tag), active: :exclusive, class: 'btn btn-sm btn-info'
   .text-secondary.lead
     Some SEO text with #{@game.name} and offered goods
   %hr
-  .row
-    .col-10
-      .btn-group
-        - @lot_names.each do |type|
-          = active_link_to type.capitalize, game_path(@game, params[:tag], type), class: 'btn btn-sm btn-warning',active: :exclusive
-    .col-2.text-right
-      = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-success btn-sm'
+  %nav.navbar.p-0.justify-content-start#filters
+    .btn-group
+      = active_link_to 'All', filtered_game_path(@game, type: 'all', tag: params[:tag]), class: 'btn btn-sm btn-warning',active: :exclusive
+      - @lot_names.each do |type|
+        = active_link_to type.capitalize, filtered_game_path(@game, type: type, tag: params[:tag]), class: 'btn btn-sm btn-warning', active: :exclusive
+
+    = form_for filtered_game_path(@game, params[:type], params[:tag]), html:  { class: 'form-inline ml-3' } do |f|
+      = f.select :server_name, @game.filtered_game_servers(params[:tag]), {}, class: 'form-control form-control-sm'
+    = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-success btn-sm ml-auto'
   %table.table.table-borderless.table-hover.mt-3
     %thead.thead-light
       %th

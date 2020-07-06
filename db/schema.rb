@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_183726) do
 
   create_table "lot_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
+    t.index ["name"], name: "index_lot_types_on_name", unique: true
   end
 
   create_table "lots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
