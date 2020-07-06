@@ -8,7 +8,8 @@ class Lot < ApplicationRecord
   belongs_to :game_server, optional: true
 
   default_scope -> { includes(:user, :game_server, :lot_type, :game) }
-  scope :by_tag, ->(tag) { all.where(game_servers: { tag: tag })}
-  scope :by_type, ->(type) { all.where(lot_types: { name: type }) unless type == 'all'}
+  scope :by_tag, ->(tag) { where(game_servers: { tag: tag }) if tag.present? }
+  scope :by_type, ->(type) { where(lot_types: { name: type }) if type.present? && type != 'all' }
+  scope :by_server, -> (id) { where(game_servers: { id: id }) if id.present? }
 
 end
