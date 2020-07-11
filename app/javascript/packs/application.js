@@ -3,7 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+require.context('./src/images/');
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles.scss'
 

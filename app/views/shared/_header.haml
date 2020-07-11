@@ -1,19 +1,20 @@
-.container
-  %nav.navbar.navbar-expand-lg.border-bottom.border-secondary
-    = link_to 'Gamepay', root_path, class: 'navbar-brand text-secondary'
-    %form.form-inline
-      %input.form-control.form-control-sm.border-0{placeholder: 'Find anything...'}
-      %button.btn.btn-sm
-        %i.fas.fa-search
+.container-fluid.bg-dark
+  .container
+    %nav.navbar.navbar-expand-lg.pt-3
+      = link_to 'Gamepay', root_path, class: 'navbar-brand text-secondary'
+      %form.form-inline
+        %input.form-control.form-control-sm.border-0{placeholder: 'Find anything...'}
+        %button.btn.btn-sm
+          %i.fas.fa-search
 
-    .collapse.navbar-collapse
-      .navbar-nav.w-100.justify-content-end.align-items-center
-        - if signed_in?
-          = link_to 'Settings', "#", class: 'nav-item nav-link'
-          = link_to 'Funds', "#", class: 'nav-item nav-link'
-          = link_to 'My games', "#", class: 'nav-item nav-link'
-          = link_to 'Help', "#", class: 'nav-item nav-link'
-          = link_to "Log out", destroy_user_session_path, class: 'nav-item nav-link', method: :delete
-        - else
-          = link_to 'Sign in', new_user_session_path, class: 'nav-item nav-link'
-          = link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link'
+      .collapse.navbar-collapse
+        .navbar-nav.w-100.justify-content-end.align-items-center
+          - if signed_in?
+            = link_to 'Settings', "#", class: 'nav-item nav-link'
+            = link_to 'Funds', "#", class: 'nav-item nav-link'
+            = link_to 'My games', "#", class: 'nav-item nav-link'
+            = link_to 'Help', "#", class: 'nav-item nav-link'
+            = link_to "Log out", destroy_user_session_path, class: 'nav-item nav-link', method: :delete
+          - else
+            = link_to 'Sign in', new_user_session_path, class: 'nav-item nav-link'
+            = link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link'

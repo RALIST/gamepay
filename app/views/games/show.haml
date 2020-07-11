@@ -6,7 +6,7 @@
       .small.btn-group
         - @game.game_servers.map(&:tag).uniq.sort.each do |tag|
           = active_link_to tag, filtered_game_path(@game, type: params[:type], tag: tag), active: :exclusive, class: 'btn btn-sm btn-info'
-  .text-secondary.lead
+  .text-secondary
     = seo_text_for_game(@game, params[:type], params[:tag])
   %hr
   %nav.navbar.p-0.justify-content-start#filters
@@ -24,8 +24,8 @@
         = check_box_tag :online, 1, (params[:online].present? && params[:online] == '1')
         = label_tag :online, 'Show sellers online', class: 'ml-1'
     = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-success btn-sm ml-auto py-1'
-  %table.table.table-borderless.table-hover.mt-3
-    %thead.thead-light
+  %table.table.table-bordered.table-dark.mt-3
+    %thead
       %th
         Seller
       %th

@@ -1,10 +1,10 @@
 %tr
   %td
-    =  link_to lot.user.name, user_path(lot.user), class: 'text-dark h6'
+    =  link_to lot.user.name, user_path(lot.user), class: 'h6'
   %td
     = lot.game_server&.name
   %td
-    = link_to lot.name, game_lot_path(lot.game, lot)
+    = link_to lot.name, game_lot_path(lot.game, lot), target: '_blank'
   %td
     = lot.price
     %i.fas.fa-dollar-sign
