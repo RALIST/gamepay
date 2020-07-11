@@ -17,7 +17,7 @@
 
     - if @game.game_servers.any?
       = form_tag filtered_game_path(@game, params[:type], params[:tag]), class: 'form-inline ml-2', method: :get do
-        = select_tag :server, options_for_select(@game.filtered_game_servers(params[:tag]), params[:server]), class: 'form-control form-control-sm'
+        = select_tag :server, options_for_select(@game.filtered_game_servers(params[:tag], params[:type]), params[:server]), include_blank: 'Choose a server...', class: 'form-control form-control-sm'
     .d-inline-flex.align-items-center.ml-3.py-1
       = form_tag filtered_game_path(@game, params[:type], params[:tag], online: params[:online], server: params[:server]), class: 'form-inline ml-3', method: :get do
         = hidden_field_tag :online, 0

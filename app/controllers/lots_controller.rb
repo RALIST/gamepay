@@ -7,7 +7,7 @@ class LotsController < ApplicationController
   end
 
   def show
-
+    @lot = Lot.friendly.find(params[:id])
   end
 
   def new

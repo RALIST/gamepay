@@ -11,11 +11,13 @@ class Game < ApplicationRecord
     slug.blank? || name_changed?
   end
 
-  def filtered_game_servers(tag = nil)
-    if tag
-      game_servers.where(tag: tag).map { |s| [s.name + " (#{s.tag})", s.id] }
+  def filtered_game_servers(tag = nil, type = nil)
+    servers = game_servers.distinct
+    if tag && tag != 'all'
+      servers = servers.where(tag: tag)
     else
-      game_servers.map { |s| [s.name  + " (#{s.tag})", s.id] }
+      servers
     end
+    servers.joins(:lots).map { |s| [s.name + " (#{s.tag})", s.id] }
   end
 end
