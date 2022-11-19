@@ -1,20 +1,17 @@
-.container-fluid.bg-dark
+.container-fluid.bg-dark.py-2
   .container
-    %nav.navbar.navbar-expand-lg.pt-3
-      = link_to 'Gamepay', root_path, class: 'navbar-brand text-secondary'
-      %form.form-inline
-        %input.form-control.form-control-sm.border-0{placeholder: 'Find anything...'}
-        %button.btn.btn-sm
-          %i.fas.fa-search
-
+    %nav.navbar.navbar-expand-lg.d-flex.align-items-center.justify-content-between
+      = link_to 'Gamepay', root_path, class: 'navbar-brand text-primary'
+      %input.form-control.form-control-sm.border-0.w-50.d-flex{placeholder: 'Find anything...'}
       .collapse.navbar-collapse
-        .navbar-nav.w-100.justify-content-end.align-items-center
+        .navbar-nav.w-100.justify-content-end.align-items-center.text-white
           - if signed_in?
-            = link_to 'Settings', "#", class: 'nav-item nav-link'
-            = link_to 'Funds', "#", class: 'nav-item nav-link'
-            = link_to 'My games', "#", class: 'nav-item nav-link'
-            = link_to 'Help', "#", class: 'nav-item nav-link'
-            = link_to "Log out", destroy_user_session_path, class: 'nav-item nav-link', method: :delete
+            = link_to 'Funds', "#", class: 'nav-item nav-link text-white'
+            = link_to 'My games', "#", class: 'nav-item nav-link text-white'
+            = link_to 'Add lot', "#", class: 'nav-item nav-link text-white'
+            = link_to 'Settings', "#", class: 'nav-item nav-link text-white'
+            = link_to 'Help', "#", class: 'nav-item nav-link text-white'
+            = link_to "Log out", destroy_user_session_path, class: 'nav-item nav-link text-white', method: :delete
           - else
-            = link_to 'Sign in', new_user_session_path, class: 'nav-item nav-link'
-            = link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link'
+            = link_to 'Sign in', new_user_session_path, class: 'nav-item nav-link text-white'
+            = link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link text-white'

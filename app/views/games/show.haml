@@ -1,15 +1,15 @@
 .container.mt-5
   %h1
-    = link_to @game.name, @game
+    = @game.name
     = params[:type]&.capitalize unless params[:type] == 'all'
+  .text-secondary
+    = seo_text_for_game(@game, params[:type], params[:tag])
+  %hr
+  %nav.navbar.p-0.justify-content-between#filters
     - if @game.game_servers.any?
       .small.btn-group
         - @game.game_servers.map(&:tag).uniq.sort.each do |tag|
           = active_link_to tag, filtered_game_path(@game, type: params[:type], tag: tag), active: :exclusive, class: 'btn btn-sm btn-info'
-  .text-secondary
-    = seo_text_for_game(@game, params[:type], params[:tag])
-  %hr
-  %nav.navbar.p-0.justify-content-start#filters
     .btn-group
       = active_link_to 'All', filtered_game_path(@game, type: 'all', tag: params[:tag]), class: 'btn btn-sm btn-warning',active: :exclusive
       - @lot_names.each do |type|
@@ -21,9 +21,9 @@
     .d-inline-flex.align-items-center.ml-3.py-1
       = form_tag filtered_game_path(@game, params[:type], params[:tag], online: params[:online], server: params[:server]), class: 'form-inline ml-3', method: :get do
         = hidden_field_tag :online, 0
-        = check_box_tag :online, 1, (params[:online].present? && params[:online] == '1')
-        = label_tag :online, 'Show sellers online', class: 'ml-1'
-    = link_to 'Add offer', new_game_lot_path(@game), class: 'btn btn-success btn-sm ml-auto py-1'
+        = check_box_tag :online, 1, (params[:online].present? && params[:online] == '1'), id: 'sellers-online'
+        = label_tag :online, 'Show sellers online', class: 'ml-1', for: 'sellers-online'
+    = link_to 'Clear', @game, class: 'btn btn-success btn-sm ml-auto py-1'
   %table.table.table-bordered.table-dark.mt-3
     %thead
       %th

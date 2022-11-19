@@ -1,0 +1,37 @@
+@import 'custom_variables';
+@import 'bootstrap';
+@import 'flash';
+
+a {
+  text-decoration: none !important;
+}
+
+table.table-bordered{
+  @extend .border-warning;
+}
+table.table-bordered > thead > tr > th{
+  @extend .border-warning;
+}
+table.table-bordered > tbody > tr > td{
+  @extend .border-warning;
+}
+
+.table-dark, .bg-dark {
+  background-color: $dark !important;
+}
+
+.form-control {
+  background-color: $dark !important;
+  color: #ffffff !important;
+  border: 1px solid $warning !important;
+
+  &:focus {
+    background-color: $dark !important;
+    color: #ffffff !important;
+  }
+}
+
+.card {
+  background-color: $dark;
+  border: 1px solid $secondary;
+}

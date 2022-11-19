@@ -1,48 +1,80 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.1.2'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
-# Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '~> 4.1'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+source 'https://rubygems.org'
+ruby '3.1.2'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false  unless (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
+gem 'activeadmin'
+gem 'active_admin_theme'
+gem 'api_guard'
+gem 'aws-sdk-s3'
+gem 'bcrypt'
+gem 'bootsnap', require: false
+gem 'devise'
+gem 'dotenv'
+gem 'dry-validation'
+gem 'factory_bot' # move it to dev group after release
+gem 'faker' # move it to dev group after release
+gem 'fastimage'
+gem 'foreman'
+gem 'friendly_id'
+gem 'hiredis'
+gem 'image_processing', '~> 1.8'
+gem 'jwt'
+gem 'multi_json'
+gem 'pagy'
+gem 'pg', '~> 1.1'
+gem 'pghero'
+gem 'pg_search', '2.3.6'
+gem 'puma', '~> 5.0'
+gem 'rack-cors'
+gem 'rails', '>= 7.0.2.3'
+gem 'redis', '~> 4.8.0', require: %w[redis redis/connection/hiredis]
+gem 'roar'
+gem 'rspec'
+gem 'rswag'
+gem 'sassc'
+gem 'sentry-rails'
+gem 'sentry-ruby'
+gem 'sentry-sidekiq'
+gem 'shrine', github: 'shrinerb/shrine'
+gem 'sidekiq'
+gem 'sprockets-rails'
+gem 'trailblazer-endpoint'
+gem 'trailblazer-rails'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'rspec-rails', '4.0.0.beta3'
+  gem 'annotate'
+  gem 'rubocop'
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec'
 end
 
-group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-sidekiq'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
+  gem 'test-prof'
+  gem 'timecop'
+end
+
+group :production do
+  gem 'newrelic_rpm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'haml-rails', '~> 2.0'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'meta-tags', '2.13.0'
-gem 'friendly_id', '~> 5.2.4'
-gem 'babosa', '1.0.3'
-gem 'devise', '~> 4.7.0'
-gem 'factory_bot_rails', '4.11.1'
-gem 'faker'
-gem 'has_scope', '0.7.2'
 gem 'active_link_to', '1.0.5'
+gem 'bootstrap', '~> 5.2.2'
+gem 'faker'
+gem 'haml-rails', '~> 2.0'
+gem 'has_scope', '0.7.2'
+gem 'meta-tags'
+gem 'psych', '< 4'
+gem 'sassc'
+gem 'turbolinks'

@@ -1,9 +1,9 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
+  encoding: utf-8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DB_USER", 'ralist') %>
+  password: <%= ENV.fetch("DB_PASSWORD", 'paduvi30') %>
 development:
   <<: *default
   database: gamepay_development
